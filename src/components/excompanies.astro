@@ -1,0 +1,46 @@
+---
+const companies = [
+  {
+    name: 'Google',
+    logo: '/assets/company-1.webp',
+    alt: 'Sequoia Capital Logo'
+  },
+  {
+    name: 'Apple',
+    logo: '/assets/company-2.webp',
+    alt: 'Andreessen Horowitz Logo'
+  },
+  {
+    name: 'Venmo',
+    logo: '/assets/company-3.webp',
+    alt: 'Accel Logo'
+  },
+  {
+    name: 'Databricks',
+    logo: '/assets/company-4.webp',
+    alt: 'Greylock Partners Logo'
+  },
+  {
+    name: 'AssemblyAI',
+    logo: '/assets/company-5.webp',
+    alt: 'Greylock Partners Logo'
+  }
+];
+---
+
+<section class="py-16 sm:py-20">
+  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="flex flex-col gap-12 sm:gap-16">
+      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Where We've Worked</h2>
+      <div class="grid gap-8 lg:grid-cols-5">
+        {
+          companies.map((companies) => (
+            <div class="flex justify-center items-center bg-primary-500/10 dark:bg-primary-400/10 rounded-3xl p-6">
+              <img src={companies.logo} alt={companies.alt} class="max-h-12" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
