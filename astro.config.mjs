@@ -1,15 +1,13 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-
 import tailwind from "@astrojs/tailwind";
+import { loadConfigFromFile } from 'vite';
 
-// https://astro.build/config
+// Load Vite configuration
+const viteConfig = await loadConfigFromFile({ command: 'serve' }, './vite.config.js');
+
 export default defineConfig({
   integrations: [tailwind(), react()],
   site: 'https://anarchy.ai',
-  resolve: {
-    alias: {
-      '@components': '/src/components',
-    },
-  },
+  vite: viteConfig.config,
 });
