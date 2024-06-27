@@ -1,9 +1,9 @@
 ---
 import BrandLogo from "./BrandLogo.astro";
 import Container from "./Container.astro";
-import { button, ghostButton, outlinedButton } from "@tailus/themer-button"
-import {cn} from "@lib/utils"
-import Frame from "./Frame.astro";
+import Announcement from "../components/Announcement.astro";
+import { button, ghostButton, outlinedButton } from "@tailus/themer-button";
+import { cn } from "@lib/utils";
 
 const links = [
     {
@@ -24,52 +24,62 @@ const links = [
     },
 ];
 ---
-<header>
-    <nav class="absolute z-50 w-full lg:bg-transparent dark:lg:bg-transparent">
-        <Container>
-            <div class="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4 lg:py-8">
-                <div class="relative z-20 flex w-full items-center justify-between md:px-0 lg:w-max">
-                    <BrandLogo />
 
-                    <div class="relative flex max-h-10 items-center lg:hidden">
-                        <button aria-label="humburger" id="hamburger" class="relative -mr-6 p-6">
-                            <div aria-hidden="true" id="line" class="m-auto h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300"></div>
-                            <div aria-hidden="true" id="line2" class="m-auto mt-2 h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300"></div>
-                        </button>
-                    </div>
-                </div>
-                <div id="navLayer" aria-hidden="true" class="fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 bg-white/70 backdrop-blur-2xl transition duration-500 dark:bg-gray-900/70 lg:hidden"></div>
-                <div id="navlinks" class="hidden flex-wrap lg:flex gap-6 items-center w-full lg:w-fit">
-                    <div class="lg:fixed lg:inset-x-0 lg:size-fit lg:m-auto">
-                        <Frame>
-                            <div class="relative w-full text-gray-600 dark:text-gray-300">
-                                <ul class="flex flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm">
-                                    {
-                                        links.map((link) => (
-                                            <li>
-                                                <a href={link.to} class="px-2 py-1 hover:bg-gray-950/5 hover:text-gray-950 rounded-[--btn-border-radius] block transition dark:hover:text-white md:px-4 dark:hover:bg-white/5">
-                                                    <span>{link.label}</span>
-                                                </a>
-                                            </li>
-                                        ))
-                                    }
-                                </ul>
-                            </div>
-                        </Frame>
-                    </div>
-                    <div class="w-full my-6 border-t dark:border-[--ui-dark-border-color] pt-6 lg:mt-0 flex gap-2 lg:my-0 lg:border-none lg:pt-0">
-                        <a href="https://hqmelywdmux.typeform.com/to/Igbg4n9V" class={cn(ghostButton.gray.sm, "hidden lg:flex")}>
-                            Contact Sales
-                        </a>
-                        <a href="https://hqmelywdmux.typeform.com/to/Igbg4n9V" class={cn(outlinedButton.gray.sm, "w-full justify-center md:w-fit lg:hidden")}>
-                            Contact Sales
-                        </a>
-                        <a href="https://chat.dev/dashboard" class={cn(button.neutral.sm, "w-full md:w-fit")}>
-                            Platform
-                        </a>
-                    </div>
-                </div>
+<div id="announcement-container">
+    <Announcement />
+</div>
+
+<header class="sticky top-10 z-40 bg-white dark:bg-gray-900 shadow-lg"> <!-- Adjusted top value to account for the announcement bar -->
+    <Container>
+        <div class="flex items-center justify-between py-3 md:py-4 lg:py-6">
+            <BrandLogo />
+            <nav class="hidden lg:flex items-center space-x-6">
+                {links.map((link) => (
+                    <a href={link.to} class="hover:text-gray-950 dark:hover:text-white">
+                        {link.label}
+                    </a>
+                ))}
+            </nav>
+            <div class="hidden lg:flex items-center space-x-4">
+                <a href="https://hqmelywdmux.typeform.com/to/Igbg4n9V" class={cn(ghostButton.gray.sm)}>
+                    Contact Sales
+                </a>
+                <a href="https://chat.dev/dashboard" class={cn(button.neutral.sm)}>
+                    Platform
+                </a>
             </div>
-        </Container>
-    </nav>
+            <div class="lg:hidden">
+                <button aria-label="hamburger" id="hamburger" class="p-6">
+                    <div class="h-0.5 w-5 bg-sky-900 dark:bg-gray-300 transition duration-300"></div>
+                    <div class="h-0.5 w-5 mt-2 bg-sky-900 dark:bg-gray-300 transition duration-300"></div>
+                </button>
+            </div>
+        </div>
+        <div id="navlinks" class="hidden lg:hidden flex-col items-center space-y-4">
+            {links.map((link) => (
+                <a href={link.to} class="hover:text-gray-950 dark:hover:text-white">
+                    {link.label}
+                </a>
+            ))}
+            <a href="https://hqmelywdmux.typeform.com/to/Igbg4n9V" class={cn(outlinedButton.gray.sm)}>
+                Contact Sales
+            </a>
+            <a href="https://chat.dev/dashboard" class={cn(button.neutral.sm)}>
+                Platform
+            </a>
+        </div>
+    </Container>
 </header>
+
+<style>
+  #hamburger:focus + #navlinks,
+  #hamburger:hover + #navlinks {
+    display: flex;
+  }
+
+  @media (min-width: 1024px) {
+    #navlinks {
+      display: none !important;
+    }
+  }
+</style>

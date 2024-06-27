@@ -4,53 +4,52 @@
 <div class="announcement-bar" id="announcement-bar">
     <span>🎉 We've raised a $3M seed round from YC, Venrex, Amino, Fellows.fund, and others</span>
     <button class="close-btn" id="close-btn">×</button>
-  </div>
-  
-  <style>
-    .announcement-bar {
-      background: linear-gradient(
-        45deg,
-        orange, 
-        purple
-      );
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-      font-size: 16px;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .announcement-bar span {
-      flex: 1;
-      text-align: center;
-    }
-  
-    .close-btn {
-      background: none;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-      margin-left: 20px;
-    }
-  
-    .close-btn:focus {
-      outline: none;
-    }
-  </style>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const closeBtn = document.getElementById('close-btn');
-      const announcementBar = document.getElementById('announcement-bar');
-      
-      closeBtn.addEventListener('click', () => {
-        announcementBar.style.display = 'none';
-      });
+</div>
+
+<style>
+  .announcement-bar {
+    background: linear-gradient(45deg, purple, magenta);
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .announcement-bar span {
+    flex: 1;
+    text-align: center;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+
+  .close-btn:focus {
+    outline: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var closeBtn = document.getElementById('close-btn');
+    var announcementBar = document.getElementById('announcement-bar');
+    var header = document.querySelector('header');
+
+    closeBtn.addEventListener('click', function() {
+      announcementBar.style.display = 'none';
+      header.style.top = '0'; // Make header sticky to the top again
+      console.log('Announcement bar closed'); // Debugging statement
     });
-  </script>
+  });
+</script>
