@@ -51,28 +51,34 @@ const links = [
                 </button>
             </div>
         </div>
-        <div id="navlinks" class="hidden lg:hidden flex-col items-center space-y-4">
+        <div id="navlinks" class="hidden lg:hidden flex-col items-center space-y-4"> <!-- Changed to items-center for centering -->
             {links.map((link) => (
-                <a href={link.to} class="hover:text-gray-950 dark:hover:text-white">
+                <a href={link.to} class="block w-full px-6 py-2 flex justify-center hover:text-gray-950 dark:hover:text-white">
                     {link.label}
                 </a>
             ))}
-            <a href="https://hqmelywdmux.typeform.com/to/Igbg4n9V" class={cn(outlinedButton.gray.sm)}>
+            <a href="https://hqmelywdmux.typeform.com/to/Igbg4n9V" class={`block w-full px-6 py-2 flex justify-center ${cn(outlinedButton.gray.sm)}`}>
                 Contact Sales
             </a>
-            <a href="https://chat.dev/dashboard" class={cn(button.neutral.sm)}>
+            <a href="https://chat.dev/dashboard" class={`block w-full px-6 py-2 flex justify-center ${cn(button.neutral.sm)}`}>
                 Platform
             </a>
         </div>
     </Container>
 </header>
 
-<style>
-  #hamburger:focus + #navlinks,
-  #hamburger:hover + #navlinks {
-    display: flex;
-  }
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger');
+    const navlinks = document.getElementById('navlinks');
 
+    hamburger.addEventListener('click', () => {
+      navlinks.classList.toggle('hidden');
+    });
+  });
+</script>
+
+<style>
   @media (min-width: 1024px) {
     #navlinks {
       display: none !important;
