@@ -1,6 +1,7 @@
 ---
 import Stats from '../components/Stats.astro';
 import HeroSection from '../components/HeroSection.astro';
+import Logos from '../components/ScrollingLogos.astro';
 import Layout from '../layouts/Layout.astro';
 import Testimonials from '../components/Testimonials.astro';
 import CallToAction from '../components/CallToAction.astro';
@@ -15,11 +16,12 @@ import Investors from '@components/Socialproof.astro';
 <Layout title="This is Anarchy.">
 	<main class="space-y-16 sm:space-y-28 lg:space-y-32 pb-40 overflow-clip">
 		<HeroSection/>
+		<Logos/>
 		<AboutSection />
 		<BentoGrid />
 		<SpeedSection />
 		<Stats/>
-<!---	<Testimonials/> -->
+		<Testimonials/>
 		<Team/>
 		<Investors/>
 		<ExCompanies/>

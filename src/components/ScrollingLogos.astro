@@ -1,0 +1,57 @@
+---
+const logos = [
+  { name: 'Amazon', src: '/assets/logos/amazon.svg' },
+  { name: 'Stanford', src: '/assets/logos/stanford.svg' },
+  { name: 'Nvidia', src: '/assets/logos/nvidia.svg' },
+  { name: 'Databricks', src: '/assets/logos/databricks.svg' },
+  { name: 'ETHZurich', src: '/assets/logos/ethzurich.svg' },
+  { name: 'Google', src: '/assets/logos/google.svg' },
+  { name: 'MIT', src: '/assets/logos/MIT.svg' },
+  { name: 'Meta', src: '/assets/logos/meta.svg' },
+  { name: 'Netflix', src: '/assets/logos/netflix.svg' },
+];
+---
+
+<div class="text-center">
+    <h2 class="text-3xl text-gray-950 dark:text-white font-semibold md:text-4xl">Trusted by researchers at leading AI organizations.</h2>
+</div>
+
+<section class="scrolling-logos">
+  <div class="logos-container">
+    {logos.concat(logos).map(logo => (
+      <img src={logo.src} alt={logo.name} class={`logo ${logo.name === 'Meta' ? 'meta-logo' : ''}`} />
+    ))}
+  </div>
+</section>
+
+<style>
+  .scrolling-logos {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    background: #000; /* Adjust this to match your site's background color */
+    padding: 1rem 0;
+  }
+  .logos-container {
+    display: flex;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+  }
+  .logo {
+    height: 50px; /* Fixed height for the logos */
+    margin-right: 7em; /* Adjust spacing between logos */
+    display: block;
+  }
+  .meta-logo {
+    height: 120px; /* Double height for Meta logo */
+    margin-top: -35px;
+  }
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>
